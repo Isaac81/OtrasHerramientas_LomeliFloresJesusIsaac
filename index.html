@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otras herramientas para manejo de errores</title>
+</head>
+<body>
+    <p>Ingrese dos numeros para division:</p>
+
+    <input id="primero" type="text">
+    <input id="segundo" type="text">
+    <button type="button" onclick="division()">Dividir</button>
+    <p id="mensaje"></p>
+
+    <script>
+        function division() {
+            const message = document.getElementById("mensaje");
+            mensaje.innerHTML = "";
+            let x = document.getElementById("primero").value;
+            let y = document.getElementById("segundo").value;
+            try {
+                if(x == "") throw "El dividendo esta vacio";
+                if(y == "") throw "El divisor esta vacio";
+                if(isNaN(x) || isNaN(y)) throw "Solo se permiten numeros";
+                if(x == 0 || y == 0) throw "No se puede dividir entre cero";
+                if(x < 0 || y < 0) throw "No se puede dividir entre numeros negativos";
+                mensaje.innerHTML = "Resultado " + x / y;
+            }
+            catch(err) {
+                mensaje.innerHTML = err;
+            }
+            finally {
+                console.log("hola");
+            }
+        }
+    </script>
+</body>
+</html>
